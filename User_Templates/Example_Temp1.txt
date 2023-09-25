@@ -1,0 +1,5 @@
+<head></head>
+<doc>
+<h1>Main Heading</h1>
+<p>INSERT BODY CONTENT</p>
+</doc>
