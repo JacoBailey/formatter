@@ -1,0 +1,8 @@
+<html>
+<head>
+</head>
+<body>
+<h1>INSERT H1 TAG</h1>
+<p>INSERT BODY CONTENT</p>
+</body>
+</html>

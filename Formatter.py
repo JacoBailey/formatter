@@ -6,7 +6,7 @@ from pathlib import Path
 
 inputRegex = re.compile(r'''(
                         (INSERT{1})
-                        ((\s{1}[A-Z]+)+)
+                        ((\s{1}[A-Z0-9]+)+)
                         )''', re.VERBOSE)
 
 class NoInputsInTemplateFile(Exception):
