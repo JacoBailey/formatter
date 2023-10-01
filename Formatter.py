@@ -43,12 +43,10 @@ def filewalk(directory): #TODO: Determine way to hide hidden filetypes such as .
         directoryFiles = files
     return directoryFiles
 
-
-
 #TEMPLATE INPUT MODE
 #Locate prompt input locations, have the user supply inputs, & fill in the prompt with the user-supplied inputs
 def templateInputter():
-    progDirectory = os.getcwd()
+    progDirectory = __file__.removesuffix(str(Path(__file__).name))
     templatesDirectory = os.path.join(Path(progDirectory), 'User_Templates')
     templatesList = filewalk(templatesDirectory)
     userSelectedTemplate_Name = pyip.inputMenu(templatesList, prompt='Please select a template file:\n', numbered=True)
@@ -67,12 +65,10 @@ def templateInputter():
         userSelectedTemplate_Contents = userSelectedTemplate_Contents.replace(fullInputSlot, userInput)
     return userSelectedTemplate_Contents
 
-
-
 #LIST FORMAT MODE: Formats user data from clipboard
 def listFormatter():
     #Ask user where data should be added (before, after, or both) pyinput plus list
-    formatLocation = {'Before Each Line':'Prefix Input','After Each Line':'Suffix Input','Prefix & Suffix Input':['Prefix Input', 'Suffix Input']}
+    formatLocation = {'Before Each Line':'Prefix Input','After Each Line':'Suffix Input','Prefix & Suffix Input':['Prefix Input', 'Suffix Input']} #TODO: Update to list (don't need key values for prefix/suffix denotation)
     formatLocation_UserSelection = pyip.inputMenu(list(formatLocation.keys()), prompt='Please select where to format each line:\n', numbered=True)
     #Ask user for delimiter (use a list of common delimiters and option for custom)
     delimiterDict = {'Newlines':'\n', 'Commas':',', 'Spaces':' ', 'Commas and Spaces':', ', 'Custom Delimiter':''}
