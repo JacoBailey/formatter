@@ -1,7 +1,7 @@
 #TEMPLATE INPUT MODE
 #Locate prompt input locations, have the user supply inputs, & fill in the prompt with the user-supplied inputs
 
-import ModsPacksLibs
+import ModsPacksLibs #Custom modules
 import os, re
 import pyinputplus as pyip
 from pathlib import Path

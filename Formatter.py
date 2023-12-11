@@ -11,5 +11,6 @@ modeDictionary = {'List Formatter':listFormatter,'Template Inputter':templateInp
 listSelection = pyip.inputMenu(list(modeDictionary.keys()), prompt='Select formatter mode:\n', numbered=True)
 returnValue = modeDictionary[listSelection]()
 #Print and copy formatter return to clipboard
+#TODO: Update to allow user to save as a file to...somewhere...? AND/OR copy to clipboard
 pyperclip.copy(returnValue)
 print(f'\n--------------------------\n\n{returnValue}\n\n--------------------------\n\n Copied to clipboard.\n')

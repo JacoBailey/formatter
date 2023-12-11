@@ -1,6 +1,6 @@
 #LIST FORMAT MODE: Formats user data from clipboard
 
-import ModsPacksLibs
+import ModsPacksLibs #Custom modules
 import pyperclip
 import pyinputplus as pyip
 
