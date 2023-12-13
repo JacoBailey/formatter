@@ -31,7 +31,7 @@ def template_inputter():
     for inputSlot in range(len(templateInputSlots)):
         fullInputSlot = templateInputSlots[inputSlot][0]
         inputSlotName = templateInputSlots[inputSlot][2]  
-        userInput = Mods_Packs_Libs.inputCorrectValidation(f'Please enter an input for: {inputSlotName}.', inputSlotName)
+        userInput = Mods_Packs_Libs.input_correct_validation(f'Please enter an input for: {inputSlotName}.', inputSlotName)
         userInputsDict[inputSlotName] = userInput
         userSelectedTemplate_Contents = userSelectedTemplate_Contents.replace(fullInputSlot, userInput)
     return userSelectedTemplate_Contents

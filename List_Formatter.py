@@ -16,7 +16,7 @@ def list_formatter():
     delimiterDict = {'Newlines':'\n', 'Commas':',', 'Spaces':' ', 'Commas and Spaces':', ', 'Custom Delimiter':''}
     delimiterSelection = pyip.inputMenu(list(delimiterDict.keys()), prompt='Please select your list\'s delimiter:\n', numbered=True)
     if delimiterSelection == 'Custom Delimiter':
-       delimiterSelection = str(Mods_Packs_Libs.inputCorrectValidation('Please enter your custom delimiter.', 'Custom Delimiter'))
+       delimiterSelection = str(Mods_Packs_Libs.input_correct_validation('Please enter your custom delimiter.', 'Custom Delimiter'))
     else:
         delimiterSelection = delimiterDict[delimiterSelection]
     #Ask user to provide inputs for formatting based on format location selection
@@ -31,7 +31,7 @@ def list_formatter():
         print(f'Please provide an input for: {formatLocation[formatLocation_UserSelection]}')
         inputsDict[inputLocation] = input()
     #Pause then request user to ensure their content is saved to their clipboard, then confirm with pyinputplus yes/no
-    Mods_Packs_Libs.yesToContinue('Please enter \'yes\' or \'y\' when you have copied the list to your clipboard.')
+    Mods_Packs_Libs.yes_to_continue('Please enter \'yes\' or \'y\' when you have copied the list to your clipboard.')
     #Take input and split values into a list based on user-provided delimiter
     clipboard = pyperclip.paste()
     if delimiterSelection not in clipboard:

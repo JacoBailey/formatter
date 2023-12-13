@@ -21,9 +21,9 @@ def regex_replacement():
     #Single Replacement Mode
     if mode == 'Single Replacement':
         #Input regex match pattern and regex replacement string
-        regexPattern = Mods_Packs_Libs.inputCorrectValidation('Please enter your regex match pattern.', 'Regex Match Pattern')
+        regexPattern = Mods_Packs_Libs.input_correct_validation('Please enter your regex match pattern.', 'Regex Match Pattern')
         regexPattern = repr(regexPattern).strip("'") #Closest equivalent to raw string for regex match
-        regexMatchReplacement = Mods_Packs_Libs.inputCorrectValidation('Please enter your regex match replacement string.', 'Regex Match Replacement String')
+        regexMatchReplacement = Mods_Packs_Libs.input_correct_validation('Please enter your regex match replacement string.', 'Regex Match Replacement String')
         #Ask for source for regex string (clipboard or file), copy source contents as regex string
         regexMethod = pyip.inputMenu(['Template File', 'Clipboard String'], prompt='Select a source for your regex search string:\n', numbered=True)
         if regexMethod == 'Template File':
@@ -34,7 +34,7 @@ def regex_replacement():
             with open(srFilePath, 'r') as regexReplacementFile:
                 regexString = regexReplacementFile.read()
         else:
-            Mods_Packs_Libs.yesToContinue('Please enter "Yes" when you have copied the regex search string to your clipboard.')
+            Mods_Packs_Libs.yes_to_continue('Please enter "Yes" when you have copied the regex search string to your clipboard.')
             regexString = pyperclip.paste()
         #Append main regex list with regex match pattern, replacement, and regex string
         mainRegexReplacementList.append([regexPattern, regexMatchReplacement, regexString])

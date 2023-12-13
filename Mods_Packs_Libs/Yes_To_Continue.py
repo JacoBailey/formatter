@@ -1,6 +1,6 @@
 import pyinputplus as pyip
 
-def yesToContinue(prompt):
+def yes_to_continue(prompt):
     print(prompt)
     while True:
         response = pyip.inputYesNo()

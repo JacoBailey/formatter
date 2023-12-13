@@ -1,6 +1,6 @@
 import pyinputplus as pyip
 
-def inputCorrectValidation(prompt, inputType):
+def input_correct_validation(prompt, inputType):
     while True:
         print(prompt)
         userInput = input()
