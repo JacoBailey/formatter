@@ -1,3 +1,10 @@
-One of my favorite shows as a child was SHOW NAME.
-It featured a dog named DOG, his best friend BEST FRIEND, and his other friends FRIENDS.
-They would go around solving crime mysteries in their super groovy VEHICLE.
+<html>
+<head>
+</head>
+<body>
+<h1>H1 TAG</h1>
+<p>MAIN BODY CONTENT 1</p>
+<p>MAIN BODY CONTENT 2</p>
+<p>MAIN BODY CONTENT 3</p>
+</body>
+</html>

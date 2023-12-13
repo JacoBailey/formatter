@@ -1,6 +1,5 @@
 ﻿Regex Pattern,Regex Replacement String
-SHOW NAME,Scooby Doo
-DOG,Scooby Doo
-BEST FRIEND,Shaggy
-FRIENDS,"Velma, Fred, and Daphne"
-VEHICLE,van (the Myster Machine)
+H1 TAG,How is the color green made?
+MAIN BODY CONTENT 1,"Green is a wonderful color. When you think of green, you may think of the forest, grass, plants, or really anything involving the natural world."
+MAIN BODY CONTENT 2,"For those artists out there who may wish to recreate the hue, you may be wondering...what do I need to do to create the color green?"
+MAIN BODY CONTENT 3,"Green is a combination of the colors yellow and blue. So, combining these colors will result in your desired color green! (Tip: changing the ratios of the blue or yellow can result in a different hue!)"
