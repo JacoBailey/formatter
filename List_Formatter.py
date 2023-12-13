@@ -8,7 +8,7 @@ class ClipboardContentMissingDelimiter(Exception):
     'Exiting program due to delimiter missing from user\'s clipboard content. Please ensure copied clipboard content has at laeast one of the selected delimiters.'
     pass
 
-def listFormatter():
+def list_formatter():
     #Ask user where data should be added (before, after, or both) pyinput plus list
     formatLocation = {'Before Each Line':'Prefix Input','After Each Line':'Suffix Input','Prefix & Suffix Input':['Prefix Input', 'Suffix Input']} #TODO: Update to list (don't need key values for prefix/suffix denotation)
     formatLocation_UserSelection = pyip.inputMenu(list(formatLocation.keys()), prompt='Please select where to format each line:\n', numbered=True)

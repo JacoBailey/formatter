@@ -15,10 +15,11 @@ class NoInputsInTemplateFile(Exception):
     'Exiting program due to no inputs in template file. Please ensure the template file used has at least one input slot and that they are using correct syntax.'
     pass
 
-def templateInputter():
+def template_inputter():
     progDirectory = __file__.removesuffix(str(Path(__file__).name))
     templatesDirectory = os.path.join(Path(progDirectory), 'Template_Inputter', 'Templates')
-    templatesList = Mods_Packs_Libs.filewalk(templatesDirectory)
+    templatesDirectoryObject = Mods_Packs_Libs.walk_simple(templatesDirectory)
+    templatesList = templatesDirectoryObject.files()
     userSelectedTemplate_Name = pyip.inputMenu(templatesList, prompt='Please select a template file:\n', numbered=True)
     userSelectedTemplate_DirectoryLocation = os.path.join(Path(templatesDirectory), userSelectedTemplate_Name)
     userSelectedTemplate_Contents = Path(userSelectedTemplate_DirectoryLocation).read_text(encoding='utf8')
