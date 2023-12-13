@@ -10,42 +10,42 @@ class ClipboardContentMissingDelimiter(Exception):
 
 def list_formatter():
     #Ask user where data should be added (before, after, or both) pyinput plus list
-    formatLocation = {'Before Each Line':'Prefix Input','After Each Line':'Suffix Input','Prefix & Suffix Input':['Prefix Input', 'Suffix Input']} #TODO: Update to list (don't need key values for prefix/suffix denotation)
-    formatLocation_UserSelection = pyip.inputMenu(list(formatLocation.keys()), prompt='Please select where to format each line:\n', numbered=True)
+    formatLocation = pyip.inputMenu(['Prefix Input', 'Suffix Input', 'Prefix & Suffix Input'], prompt='Please select where to format each line:\n', numbered=True)
+    
     #Ask user for delimiter (use a list of common delimiters and option for custom)
     delimiterDict = {'Newlines':'\n', 'Commas':',', 'Spaces':' ', 'Commas and Spaces':', ', 'Custom Delimiter':''}
     delimiterSelection = pyip.inputMenu(list(delimiterDict.keys()), prompt='Please select your list\'s delimiter:\n', numbered=True)
     if delimiterSelection == 'Custom Delimiter':
-       delimiterSelection = str(Mods_Packs_Libs.input_correct_validation('Please enter your custom delimiter.', 'Custom Delimiter'))
-    else:
-        delimiterSelection = delimiterDict[delimiterSelection]
+       delimiterDict['Custom Delimiter'] = str(Mods_Packs_Libs.input_correct_validation('Please enter your custom delimiter.', 'Custom Delimiter'))
+    delimiterSelection = delimiterDict[delimiterSelection]
+    
     #Ask user to provide inputs for formatting based on format location selection
     inputsDict = {}
-    inputLocation = formatLocation[formatLocation_UserSelection]
-    if type(formatLocation[formatLocation_UserSelection]) == list:
-        for inputLocIndex in range(len(formatLocation[formatLocation_UserSelection])):
-            print(f'Please provide an input for: {formatLocation[formatLocation_UserSelection][inputLocIndex]}')
-            inputLocation = formatLocation[formatLocation_UserSelection][inputLocIndex]
-            inputsDict[inputLocation] = input()
-    else:
-        print(f'Please provide an input for: {formatLocation[formatLocation_UserSelection]}')
-        inputsDict[inputLocation] = input()
-    #Pause then request user to ensure their content is saved to their clipboard, then confirm with pyinputplus yes/no
+    if formatLocation == 'Prefix Input' or formatLocation == 'Prefix & Suffix Input':
+        inputsDict['Prefix Input'] = Mods_Packs_Libs.input_correct_validation('Please provide an input for Prefix Input', 'Prefix Input')
+    if formatLocation == 'Suffix Input' or formatLocation == 'Prefix & Suffix Input':
+        inputsDict['Suffix Input'] = Mods_Packs_Libs.input_correct_validation('Please provide an input for Suffix Input', 'Suffix Input')
+
+    #Have user copy formatting to clipboard
     Mods_Packs_Libs.yes_to_continue('Please enter \'yes\' or \'y\' when you have copied the list to your clipboard.')
+    
     #Take input and split values into a list based on user-provided delimiter
     clipboard = pyperclip.paste()
     if delimiterSelection not in clipboard:
         raise ClipboardContentMissingDelimiter
     listToFormat = clipboard.split(delimiterSelection)
-    #Strip empty spaces and characters from beginning and end of each value AND add inputs to front/end of each index in user's list
+    
+    #Main list formatting loop
     for index in range(len(listToFormat)):
+        #Strip empty spaces and characters from beginning and end of each value
         listToFormat[index] = listToFormat[index].strip()
-    #Using a looped function, concat values to front/back of each item and add them back to the list
-        if 'Prefix Input' in inputsDict.keys():
+        #Add prefix and/or suffix values to each item
+        if formatLocation == 'Prefix Input' or formatLocation == 'Prefix & Suffix Input':
             listToFormat[index] = inputsDict['Prefix Input'] + listToFormat[index]
-        elif 'Suffix Input' in inputsDict.keys():
+        if formatLocation == 'Suffix Input' or formatLocation == 'Prefix & Suffix Input':
             listToFormat[index] = listToFormat[index] + inputsDict['Suffix Input']
         continue
-    #Combine list into a string with selected delimiter and return it
+
+    #Join list into a string with selected delimiter and return it
     formattedList = delimiterSelection.join(listToFormat)
     return formattedList
