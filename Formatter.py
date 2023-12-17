@@ -23,7 +23,7 @@ if outputSelection == 'Saved to Clipboard' or outputSelection == 'Saved to Clipb
     pyperclip.copy(returnValue)
 if outputSelection == 'Saved to \'Outputs\' directory' or outputSelection =='Saved to Clipboard and \'Outputs\' directory':
     fileName = Mods_Packs_Libs.input_correct_validation('Please enter a name for the output file:', 'output filename')
-    with open(os.path.join(outputsDirecPath, fileName), 'w') as file:
+    with open(Path(os.path.join(outputsDirecPath, (fileName + '.txt'))), 'w') as file:
         file.write(returnValue)
 
 #Print results and selected output method
