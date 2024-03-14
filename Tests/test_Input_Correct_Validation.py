@@ -11,11 +11,6 @@ sys.path.append(mainProgDirec_Str)
 #----------------------------------------------------------------------------
 import Mods_Packs_Libs
 
-#TODO: Mock input
-#TODO: Parameterize inputYesNo
-#TODO: Cleanup formatting
-#TODO: Create NoInput test
-
 @patch('Mods_Packs_Libs.Input_Correct_Validation.pyip.inputYesNo')
 @patch('Mods_Packs_Libs.Input_Correct_Validation.input')
 class Test_Input_Correct_Validation:   
