@@ -20,7 +20,7 @@ for root, dirs, files in os.walk(validTestsProgDirectory):
     dirsVar = dirs
     filesVar = files
 
-class Test_filewalk:
+class Test_Walk_Simple:
 
     def test_Valid_Directory_Filewalk(self):
         walkSimpInst = Mods_Packs_Libs.walk_simple(validTestsProgDirectory)
