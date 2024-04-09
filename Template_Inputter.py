@@ -17,9 +17,9 @@ class NoInputsInTemplateFile(Exception):
 
 def template_inputter():
     progDirectory = __file__.removesuffix(str(Path(__file__).name))
-    templatesDirectory = os.path.join(Path(progDirectory), 'Template_Inputter', 'Templates')
+    templatesDirectory = os.path.join(Path(progDirectory), 'Templates')
     templatesDirectoryObject = Mods_Packs_Libs.walk_simple(templatesDirectory)
-    templatesList = templatesDirectoryObject.files()
+    templatesList = templatesDirectoryObject.files
     userSelectedTemplate_Name = pyip.inputMenu(templatesList, prompt='Please select a template file:\n', numbered=True)
     userSelectedTemplate_DirectoryLocation = os.path.join(Path(templatesDirectory), userSelectedTemplate_Name)
     userSelectedTemplate_Contents = Path(userSelectedTemplate_DirectoryLocation).read_text(encoding='utf8')

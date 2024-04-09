@@ -1,8 +1,8 @@
 import pyinputplus as pyip
 
-def yes_to_continue(prompt, test=False):
+def yes_to_continue(promptVar, test=False):
     while True:
-        response = pyip.inputYesNo()
+        response = pyip.inputYesNo(prompt=promptVar)
         if response not in ['yes', 'y', 'YES', 'Y', 'Yes' 'yEs', 'yeS', 'YEs', 'yES', 'YeS']:
             if test == True:
                 return True
