@@ -29,12 +29,12 @@ def regex_replacement():
         if regexMethod == 'Template File':
             srDirectoryPath = os.path.join(Path(progDirectory), 'Regex', 'Single_Replacement')
             srDirectory = Mods_Packs_Libs.walk_simple(srDirectoryPath)
-            srFilename = pyip.inputMenu(srDirectory.files(), prompt='Please select the file you would like to use for the Regex Search String:\n', numbered=True)
+            srFilename = pyip.inputMenu(srDirectory.files, prompt='Please select the file you would like to use for the Regex Search String:\n', numbered=True)
             srFilePath = os.path.join(Path(srDirectoryPath),srFilename)
             with open(srFilePath, 'r') as regexReplacementFile:
                 regexString = regexReplacementFile.read()
         else:
-            Mods_Packs_Libs.yes_to_continue('Please enter "Yes" when you have copied the regex search string to your clipboard.')
+            Mods_Packs_Libs.yes_to_continue('Please enter "Yes" when you have copied the regex search string to your clipboard.\n')
             regexString = pyperclip.paste()
         #Append main regex list with regex match pattern, replacement, and regex string
         mainRegexReplacementList.append([regexPattern, regexMatchReplacement, regexString])
@@ -44,11 +44,11 @@ def regex_replacement():
         mrDirectoryPath = os.path.join(Path(progDirectory), 'Regex', 'Multiple_Replacement')
         mrDirectory = Mods_Packs_Libs.walk_simple(mrDirectoryPath)
         #Select directory as source for regex replacement components
-        mrSubdirectoryName = pyip.inputMenu(mrDirectory.directories(), prompt='Please select a directory:\n', numbered=True)
+        mrSubdirectoryName = pyip.inputMenu(mrDirectory.dirs, prompt='Please select a directory:\n', numbered=True)
         mrSubdirectoryPath = os.path.join(mrDirectoryPath, mrSubdirectoryName)
         mrSubdirectory = Mods_Packs_Libs.walk_simple(mrSubdirectoryPath)
         #Save CSV contents as regex patterns and replacements
-        for file in mrSubdirectory.files():
+        for file in mrSubdirectory.files:
             if Path(file).suffix == '.csv':
                 regexCsvFile = os.path.join(mrSubdirectoryPath, file)
             elif Path(file).suffix == '.txt':
